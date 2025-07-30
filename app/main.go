@@ -44,17 +44,18 @@ func main() {
 			if err != nil {
 				panic(err)
 			}
-			rc, err := io.ReadAll(r)
-			if err != nil {
-				panic(err)
-			}
+			io.Copy(os.Stdout, r)
+			// rc, err := io.ReadAll(r)
+			// if err != nil {
+			// 	panic(err)
+			// }
 			// io.Copy(os.Stdout, string(rc))
 			r.Close()
-			for i := range len(rc) {
-				if rc[i] == 0 {
-					fmt.Printf("%s", string(rc)[i:])
-				}
-			}
+			// for i := range len(rc) {
+			// 	if rc[i] == 0 {
+			// 		fmt.Printf("%s", string(rc)[i:])
+			// 	}
+			// }
 		}
 	default:
 		fmt.Fprintf(os.Stderr, "Unknown command %s\n", command)
