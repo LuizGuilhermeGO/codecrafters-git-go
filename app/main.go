@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"strings"
 )
 
 // Usage: your_program.sh <command> <arg1> <arg2> ...
@@ -44,15 +45,18 @@ func main() {
 			if err != nil {
 				panic(err)
 			}
-			io.Copy(os.Stdout, r)
-			// rc, err := io.ReadAll(r)
-			// if err != nil {
-			// 	panic(err)
-			// }
-			// io.Copy(os.Stdout, string(rc))
+			// io.Copy(os.Stdout, r)
+			rc, err := io.ReadAll(r)
+			if err != nil {
+				panic(err)
+			}
+
+			// // io.Copy(os.Stdout, string(rc))
 			r.Close()
+			newStr := strings.SplitN(string(rc), "\x00", 2)
+			fmt.Printf("%s", newStr)
 			// for i := range len(rc) {
-			// 	if rc[i] == 0 {
+			// 	if rc[i] == "\x00" {
 			// 		fmt.Printf("%s", string(rc)[i:])
 			// 	}
 			// }
