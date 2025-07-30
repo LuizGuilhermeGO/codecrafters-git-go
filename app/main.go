@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"io"
 	"os"
-	"strings"
 )
 
 // Usage: your_program.sh <command> <arg1> <arg2> ...
@@ -53,9 +52,9 @@ func main() {
 
 			// // io.Copy(os.Stdout, string(rc))
 			r.Close()
-			valueFound := strings.Index(string(rc), "\x00")
+			// valueFound := strings.Index(string(rc), "\x00")
 
-			fmt.Printf("%s", string(rc)[valueFound+4:])
+			fmt.Printf("%s", string(rc))
 			// for i := range len(rc) {
 			// 	if rc[i] == "\x00" {
 			// 		fmt.Printf("%s", string(rc)[i:])
