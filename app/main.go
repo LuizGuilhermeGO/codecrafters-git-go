@@ -54,7 +54,8 @@ func main() {
 			// // io.Copy(os.Stdout, string(rc))
 			r.Close()
 			valueFound := strings.Index(string(rc), "\x00")
-			fmt.Printf("%s", string(rc)[valueFound:])
+			fmt.Println(valueFound)
+			// fmt.Printf("%s", string(rc)[valueFound:])
 			// for i := range len(rc) {
 			// 	if rc[i] == "\x00" {
 			// 		fmt.Printf("%s", string(rc)[i:])
