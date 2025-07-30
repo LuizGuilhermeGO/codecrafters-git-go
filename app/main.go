@@ -55,7 +55,7 @@ func main() {
 			r.Close()
 			valueFound := strings.SplitN(string(rc), "\x00", 2)
 
-			fmt.Printf("%s", valueFound[2])
+			fmt.Printf("%s", valueFound[1])
 			// for i := range len(rc) {
 			// 	if rc[i] == "\x00" {
 			// 		fmt.Printf("%s", string(rc)[i:])
